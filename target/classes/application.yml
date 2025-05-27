@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: shoppingcart
+  #配置数据库的链接信息
+  #固定的四项信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/shoppingcart
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1104957198
+
+  #配置MyBatis的日志输出
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    mapper-locations: classpath*:com/itjay/mapper/*.xml
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: javaweb-itjay
+    region: cn-beijing

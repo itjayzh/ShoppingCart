@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家电商城系统原型图</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #409EFF;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #409EFF;
+        }
+
+        h2 {
+            color: #303133;
+            margin-top: 40px;
+            padding-left: 15px;
+            border-left: 4px solid #409EFF;
+        }
+
+        .prototype-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .flow-box {
+            background: white;
+            border: 2px solid #409EFF;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 200px;
+            box-shadow: 0 2px 8px rgba(64, 158, 255, 0.1);
+        }
+
+        .flow-box-title {
+            color: #409EFF;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ebeef5;
+        }
+
+        .flow-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .flow-list li {
+            margin: 5px 0;
+            padding: 5px 0;
+            color: #606266;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #409EFF;
+            font-size: 24px;
+            padding: 0 10px;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .tech-box {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-title {
+            color: #409EFF;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ebeef5;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tech-list li {
+            margin: 8px 0;
+            color: #606266;
+        }
+
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav li {
+            margin: 5px 0;
+        }
+
+        .nav a {
+            color: #409EFF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            color: #66b1ff;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .wireframe-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .wireframe {
+            flex: 1;
+            min-width: 300px;
+            border: 2px solid #dcdfe6;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fff;
+        }
+        
+        .wireframe-header {
+            color: #303133;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ebeef5;
+            margin-bottom: 15px;
+        }
+        
+        .wireframe-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ebeef5;
+            margin-bottom: 15px;
+        }
+        
+        .wireframe-logo {
+            border: 1px solid #dcdfe6;
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+        
+        .wireframe-nav-right {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .wireframe-nav-item {
+            border: 1px solid #dcdfe6;
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+        
+        .wireframe-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+        
+        .product-card {
+            border: 1px solid #ebeef5;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        
+        .product-image {
+            height: 100px;
+            background: #f5f7fa;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #909399;
+            font-size: 12px;
+        }
+        
+        .product-info {
+            font-size: 12px;
+        }
+        
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .product-detail-image {
+            height: 200px;
+            background: #f5f7fa;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #909399;
+        }
+        
+        .product-detail-info {
+            padding: 15px;
+            border: 1px solid #ebeef5;
+            border-radius: 4px;
+        }
+        
+        .product-detail-actions {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .action-button {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            background: #409EFF;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 10px;
+            border: 1px solid #ebeef5;
+            border-radius: 4px;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #909399;
+            font-size: 12px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-top: 1px solid #ebeef5;
+            margin-top: 15px;
+        }
+
+        .page-wireframe {
+            margin-bottom: 40px;
+            background: white;
+            border: 2px solid #dcdfe6;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .page-title {
+            color: #409EFF;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #409EFF;
+        }
+
+        .page-content {
+            background: #fff;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ebeef5;
+            background: #fff;
+            position: sticky;
+            top: 0;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            color: #409EFF;
+            font-weight: bold;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-item {
+            padding: 8px 16px;
+            color: #606266;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .nav-username {
+            color: #409EFF;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .nav-item.active {
+            color: #409EFF;
+            background: #ecf5ff;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ebeef5;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .product-image {
+            height: 200px;
+            background: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            color: #303133;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: #f56c6c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .product-detail {
+            padding: 20px;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 400px;
+            background: #f5f7fa;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-info {
+            margin-bottom: 20px;
+        }
+
+        .detail-name {
+            font-size: 24px;
+            color: #303133;
+            margin-bottom: 10px;
+        }
+
+        .detail-price {
+            color: #f56c6c;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .detail-rating {
+            color: #e6a23c;
+            margin-bottom: 15px;
+        }
+
+        .detail-attrs {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f7fa;
+            border-radius: 8px;
+        }
+
+        .attr-group {
+            margin-bottom: 15px;
+        }
+
+        .attr-title {
+            color: #606266;
+            margin-bottom: 10px;
+        }
+
+        .attr-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .attr-option {
+            padding: 6px 12px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .attr-option.selected {
+            color: #409EFF;
+            border-color: #409EFF;
+            background: #ecf5ff;
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #409EFF;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #ecf5ff;
+            color: #409EFF;
+        }
+
+        .cart-list {
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #ebeef5;
+        }
+
+        .cart-image {
+            width: 120px;
+            height: 120px;
+            background: #f5f7fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-info {
+            flex: 1;
+        }
+
+        .cart-name {
+            font-size: 16px;
+            color: #303133;
+            margin-bottom: 8px;
+        }
+
+        .cart-attrs {
+            color: #909399;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .cart-price {
+            color: #f56c6c;
+            font-size: 16px;
+        }
+
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 24px;
+            height: 24px;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .cart-footer {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #ebeef5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-total {
+            font-size: 18px;
+        }
+
+        .cart-total-price {
+            color: #f56c6c;
+            font-weight: bold;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ebeef5;
+        }
+
+        .cart-title {
+            font-size: 20px;
+            color: #303133;
+            font-weight: bold;
+        }
+
+        .continue-shopping {
+            color: #409EFF;
+            cursor: pointer;
+        }
+
+        .cart-content {
+            padding: 0 20px;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ebeef5;
+        }
+
+        .select-all {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 20px;
+        }
+
+        .batch-delete {
+            padding: 6px 12px;
+            background: #fef0f0;
+            color: #f56c6c;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-table th {
+            padding: 15px 0;
+            color: #909399;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .cart-table td {
+            padding: 20px 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-info {
+            text-align: left;
+        }
+
+        .cart-item-name {
+            font-size: 14px;
+            color: #303133;
+            margin-bottom: 8px;
+        }
+
+        .cart-item-attrs {
+            font-size: 12px;
+            color: #909399;
+        }
+
+        .cart-quantity {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #dcdfe6;
+            border-radius: 4px;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #dcdfe6;
+            border-right: 1px solid #dcdfe6;
+            height: 28px;
+        }
+
+        .cart-footer {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #ebeef5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-summary {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .selected-count {
+            color: #606266;
+        }
+
+        .total-amount {
+            color: #f56c6c;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>家电商城系统原型图</h1>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#auth">用户认证系统</a></li>
+                <li><a href="#product">商品展示与购物车系统</a></li>
+                <li><a href="#order">订单管理系统</a></li>
+                <li><a href="#attribute">产品属性管理系统</a></li>
+                <li><a href="#flow">整体系统流程图</a></li>
+                <li><a href="#tech">技术实现架构</a></li>
+            </ul>
+        </nav>
+
+        <section id="auth" class="prototype-section">
+            <h2>1. 用户认证系统</h2>
+            <div class="flow-container">
+                <div class="flow-box">
+                    <div class="flow-box-title">登录页面</div>
+                    <ul class="flow-list">
+                        <li>用户名输入</li>
+                        <li>密码输入</li>
+                        <li>登录按钮</li>
+                        <li>注册链接</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">JWT令牌验证</div>
+                    <ul class="flow-list">
+                        <li>令牌生成</li>
+                        <li>令牌验证</li>
+                        <li>权限控制</li>
+                    </ul>
+                </div>
+                <div class="flow-box">
+                    <div class="flow-box-title">注册页面</div>
+                    <ul class="flow-list">
+                        <li>用户名输入</li>
+                        <li>密码输入</li>
+                        <li>确认密码输入</li>
+                        <li>注册按钮</li>
+                        <li>登录链接</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">密码加密存储</div>
+                    <ul class="flow-list">
+                        <li>BCrypt加密</li>
+                        <li>数据库存储</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="product" class="prototype-section">
+            <h2>2. 商品展示与购物车系统</h2>
+            <div class="flow-container">
+                <div class="flow-box">
+                    <div class="flow-box-title">首页商品展示</div>
+                    <ul class="flow-list">
+                        <li>商品卡片网格</li>
+                        <li>商品名称</li>
+                        <li>商品价格</li>
+                        <li>加入购物车按钮</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">商品详情页</div>
+                    <ul class="flow-list">
+                        <li>商品大图</li>
+                        <li>商品名称和价格</li>
+                        <li>商品属性选择</li>
+                        <li>数量选择</li>
+                        <li>加入购物车按钮</li>
+                        <li>立即购买按钮</li>
+                    </ul>
+                </div>
+                <div class="flow-box">
+                    <div class="flow-box-title">购物车管理</div>
+                    <ul class="flow-list">
+                        <li>添加商品</li>
+                        <li>更新数量</li>
+                        <li>删除商品</li>
+                        <li>清空购物车</li>
+                        <li>商品属性存储</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">购物车页面</div>
+                    <ul class="flow-list">
+                        <li>商品列表</li>
+                        <li>数量调整</li>
+                        <li>商品属性显示</li>
+                        <li>单价与小计</li>
+                        <li>全选/批量操作</li>
+                        <li>商品总价计算</li>
+                        <li>结算按钮</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="order" class="prototype-section">
+            <h2>3. 订单管理系统</h2>
+            <div class="flow-container">
+                <div class="flow-box">
+                    <div class="flow-box-title">订单创建</div>
+                    <ul class="flow-list">
+                        <li>购物车选中商品</li>
+                        <li>用户ID关联</li>
+                        <li>订单状态设置</li>
+                        <li>总价计算</li>
+                        <li>订单项存储</li>
+                        <li>下单时间记录</li>
+                        <li>购物车项删除</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">订单列表</div>
+                    <ul class="flow-list">
+                        <li>订单卡片展示</li>
+                        <li>订单时间显示</li>
+                        <li>订单状态标签</li>
+                        <li>商品清单列表</li>
+                        <li>商品属性显示</li>
+                        <li>数量与小计</li>
+                        <li>订单总价显示</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="attribute" class="prototype-section">
+            <h2>4. 产品属性管理系统</h2>
+            <div class="flow-container">
+                <div class="flow-box">
+                    <div class="flow-box-title">产品属性存储</div>
+                    <ul class="flow-list">
+                        <li>JSON格式属性存储</li>
+                        <li>颜色选项管理</li>
+                        <li>规格选项管理</li>
+                        <li>其他属性选项</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">属性展示与选择</div>
+                    <ul class="flow-list">
+                        <li>商品详情中属性展示</li>
+                        <li>单选按钮组选择</li>
+                        <li>选中属性高亮显示</li>
+                        <li>属性转中文标签显示</li>
+                    </ul>
+                </div>
+                <div class="flow-box">
+                    <div class="flow-box-title">购物车属性存储</div>
+                    <ul class="flow-list">
+                        <li>用户选择属性记录</li>
+                        <li>JSON字符串转换</li>
+                        <li>属性一致性检查</li>
+                    </ul>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">订单中属性显示</div>
+                    <ul class="flow-list">
+                        <li>规格标签化显示</li>
+                        <li>颜色标签化显示</li>
+                        <li>属性格式化处理</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="flow" class="prototype-section">
+            <h2>5. 整体系统流程图</h2>
+            <div class="flow-container">
+                <div class="flow-box">
+                    <div class="flow-box-title">用户登录</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">浏览商品</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">商品详情</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">加入购物车</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">更新数量</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">购物车页</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">订单确认</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">订单创建</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-box">
+                    <div class="flow-box-title">查看订单</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech" class="prototype-section">
+            <h2>6. 技术实现架构</h2>
+            <div class="tech-grid">
+                <div class="tech-box">
+                    <div class="tech-title">前端技术栈</div>
+                    <ul class="tech-list">
+                        <li>Vue.js</li>
+                        <li>Element Plus UI</li>
+                        <li>Pinia 状态管理</li>
+                        <li>Vue Router</li>
+                        <li>Axios HTTP客户端</li>
+                    </ul>
+                    <div class="tech-title">前端页面组件</div>
+                    <ul class="tech-list">
+                        <li>登录/注册</li>
+                        <li>主页商品列表</li>
+                        <li>商品详情页</li>
+                        <li>购物车页面</li>
+                        <li>订单页面</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <div class="tech-title">后端技术栈</div>
+                    <ul class="tech-list">
+                        <li>Spring Boot</li>
+                        <li>Spring Security</li>
+                        <li>MyBatis</li>
+                        <li>JWT 认证</li>
+                        <li>MySQL 数据库</li>
+                    </ul>
+                    <div class="tech-title">RESTful API 接口</div>
+                    <ul class="tech-list">
+                        <li>用户控制器</li>
+                        <li>商品控制器</li>
+                        <li>购物车控制器</li>
+                        <li>订单控制器</li>
+                        <li>全局异常处理</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="layout" class="prototype-section">
+            <h2>7. 页面布局原型图</h2>
+            <style>
+                .page-wireframe {
+                    margin-bottom: 40px;
+                    background: white;
+                    border: 2px solid #dcdfe6;
+                    border-radius: 12px;
+                    padding: 20px;
+                }
+
+                .page-title {
+                    color: #409EFF;
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                    padding-bottom: 10px;
+                    border-bottom: 2px solid #409EFF;
+                }
+
+                .page-content {
+                    background: #fff;
+                    border-radius: 8px;
+                    min-height: 400px;
+                }
+
+                .nav-bar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px;
+                    border-bottom: 1px solid #ebeef5;
+                    background: #fff;
+                    position: sticky;
+                    top: 0;
+                }
+
+                .nav-logo {
+                    font-size: 24px;
+                    color: #409EFF;
+                    font-weight: bold;
+                }
+
+                .nav-items {
+                    display: flex;
+                    gap: 20px;
+                    align-items: center;
+                }
+
+                .nav-item {
+                    padding: 8px 16px;
+                    color: #606266;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                .nav-item.active {
+                    color: #409EFF;
+                    background: #ecf5ff;
+                }
+
+                .nav-username {
+                    color: #409EFF;
+                    font-size: 14px;
+                    margin-left: 10px;
+                }
+
+                .products-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    gap: 20px;
+                    padding: 20px;
+                }
+
+                .product-card {
+                    border: 1px solid #ebeef5;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    transition: all 0.3s;
+                }
+
+                .product-card:hover {
+                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+                    transform: translateY(-2px);
+                }
+
+                .product-image {
+                    height: 200px;
+                    background: #f5f7fa;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .product-info {
+                    padding: 15px;
+                }
+
+                .product-name {
+                    font-size: 16px;
+                    color: #303133;
+                    margin-bottom: 8px;
+                }
+
+                .product-price {
+                    color: #f56c6c;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                .product-detail {
+                    padding: 20px;
+                }
+
+                .detail-image {
+                    width: 100%;
+                    height: 400px;
+                    background: #f5f7fa;
+                    margin-bottom: 20px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .detail-info {
+                    margin-bottom: 20px;
+                }
+
+                .detail-name {
+                    font-size: 24px;
+                    color: #303133;
+                    margin-bottom: 10px;
+                }
+
+                .detail-price {
+                    color: #f56c6c;
+                    font-size: 24px;
+                    margin-bottom: 15px;
+                }
+
+                .detail-rating {
+                    color: #e6a23c;
+                    margin-bottom: 15px;
+                }
+
+                .detail-attrs {
+                    margin: 20px 0;
+                    padding: 15px;
+                    background: #f5f7fa;
+                    border-radius: 8px;
+                }
+
+                .attr-group {
+                    margin-bottom: 15px;
+                }
+
+                .attr-title {
+                    color: #606266;
+                    margin-bottom: 10px;
+                }
+
+                .attr-options {
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+
+                .attr-option {
+                    padding: 6px 12px;
+                    border: 1px solid #dcdfe6;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+
+                .attr-option.selected {
+                    color: #409EFF;
+                    border-color: #409EFF;
+                    background: #ecf5ff;
+                }
+
+                .detail-actions {
+                    display: flex;
+                    gap: 20px;
+                    margin-top: 20px;
+                }
+
+                .action-btn {
+                    flex: 1;
+                    padding: 12px;
+                    text-align: center;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+
+                .btn-primary {
+                    background: #409EFF;
+                    color: white;
+                }
+
+                .btn-secondary {
+                    background: #ecf5ff;
+                    color: #409EFF;
+                }
+
+                .cart-list {
+                    padding: 20px;
+                }
+
+                .cart-item {
+                    display: flex;
+                    gap: 20px;
+                    padding: 20px;
+                    border-bottom: 1px solid #ebeef5;
+                }
+
+                .cart-image {
+                    width: 120px;
+                    height: 120px;
+                    background: #f5f7fa;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .cart-info {
+                    flex: 1;
+                }
+
+                .cart-name {
+                    font-size: 16px;
+                    color: #303133;
+                    margin-bottom: 8px;
+                }
+
+                .cart-attrs {
+                    color: #909399;
+                    font-size: 14px;
+                    margin-bottom: 8px;
+                }
+
+                .cart-price {
+                    color: #f56c6c;
+                    font-size: 16px;
+                }
+
+                .cart-quantity {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 10px;
+                }
+
+                .quantity-btn {
+                    width: 24px;
+                    height: 24px;
+                    border: 1px solid #dcdfe6;
+                    border-radius: 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                }
+
+                .cart-footer {
+                    position: sticky;
+                    bottom: 0;
+                    background: white;
+                    padding: 20px;
+                    border-top: 1px solid #ebeef5;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .cart-total {
+                    font-size: 18px;
+                }
+
+                .cart-total-price {
+                    color: #f56c6c;
+                    font-weight: bold;
+                }
+
+                .cart-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 20px;
+                    border-bottom: 1px solid #ebeef5;
+                }
+
+                .cart-title {
+                    font-size: 20px;
+                    color: #303133;
+                    font-weight: bold;
+                }
+
+                .continue-shopping {
+                    color: #409EFF;
+                    cursor: pointer;
+                }
+
+                .cart-content {
+                    padding: 0 20px;
+                }
+
+                .cart-controls {
+                    display: flex;
+                    align-items: center;
+                    padding: 15px 0;
+                    border-bottom: 1px solid #ebeef5;
+                }
+
+                .select-all {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-right: 20px;
+                }
+
+                .batch-delete {
+                    padding: 6px 12px;
+                    background: #fef0f0;
+                    color: #f56c6c;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .cart-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                .cart-table th {
+                    padding: 15px 0;
+                    color: #909399;
+                    font-weight: normal;
+                    text-align: center;
+                }
+
+                .cart-table td {
+                    padding: 20px 0;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+
+                .cart-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                }
+
+                .cart-item-image {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 4px;
+                }
+
+                .cart-item-info {
+                    text-align: left;
+                }
+
+                .cart-item-name {
+                    font-size: 14px;
+                    color: #303133;
+                    margin-bottom: 8px;
+                }
+
+                .cart-item-attrs {
+                    font-size: 12px;
+                    color: #909399;
+                }
+
+                .cart-quantity {
+                    display: inline-flex;
+                    align-items: center;
+                    border: 1px solid #dcdfe6;
+                    border-radius: 4px;
+                }
+
+                .quantity-input {
+                    width: 40px;
+                    text-align: center;
+                    border: none;
+                    border-left: 1px solid #dcdfe6;
+                    border-right: 1px solid #dcdfe6;
+                    height: 28px;
+                }
+
+                .cart-footer {
+                    position: sticky;
+                    bottom: 0;
+                    background: white;
+                    padding: 20px;
+                    border-top: 1px solid #ebeef5;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .cart-summary {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
+                .selected-count {
+                    color: #606266;
+                }
+
+                .total-amount {
+                    color: #f56c6c;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            </style>
+
+            <!-- 首页布局 -->
+            <div class="page-wireframe">
+                <div class="page-title">首页布局</div>
+                <div class="page-content">
+                    <div class="nav-bar">
+                        <div class="nav-logo">家电商城</div>
+                        <div class="nav-items">
+                            <div class="nav-item active">首页</div>
+                            <div class="nav-item">购物车</div>
+                            <div class="nav-username">用户名</div>
+                        </div>
+                    </div>
+                    <h2 style="text-align: center; margin: 20px 0;">热门商品</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">微波炉图片</div>
+                            <div class="product-info">
+                                <div class="product-name">微波炉</div>
+                                <div class="product-price">¥399</div>
+                                <button class="action-btn btn-primary" style="width: 100%; margin-top: 10px;">加入购物车</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">电风扇图片</div>
+                            <div class="product-info">
+                                <div class="product-name">电风扇</div>
+                                <div class="product-price">¥129</div>
+                                <button class="action-btn btn-primary" style="width: 100%; margin-top: 10px;">加入购物车</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">空调图片</div>
+                            <div class="product-info">
+                                <div class="product-name">空调</div>
+                                <div class="product-price">¥2999</div>
+                                <button class="action-btn btn-primary" style="width: 100%; margin-top: 10px;">加入购物车</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">电饭煲图片</div>
+                            <div class="product-info">
+                                <div class="product-name">电饭煲</div>
+                                <div class="product-price">¥299</div>
+                                <button class="action-btn btn-primary" style="width: 100%; margin-top: 10px;">加入购物车</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品详情页布局 -->
+            <div class="page-wireframe">
+                <div class="page-title">商品详情页布局</div>
+                <div class="page-content">
+                    <div class="nav-bar">
+                        <div style="display: flex; align-items: center;">
+                            <div style="margin-right: 10px;">返回</div>
+                            <div>商品详情</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; padding: 20px;">
+                        <div style="flex: 1;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" style="width: 100%;" alt="电风扇">
+                        </div>
+                        <div style="flex: 1; padding-left: 30px;">
+                            <h1 style="font-size: 28px; color: #333; margin-bottom: 20px;">电风扇</h1>
+                            <div style="font-size: 24px; color: #f56c6c; font-weight: bold; margin-bottom: 30px;">¥129</div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="margin-bottom: 10px; font-weight: bold;">规格：</div>
+                                <div style="display: flex; gap: 10px;">
+                                    <div style="border: 1px solid #dcdfe6; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; cursor: pointer; background-color: #409EFF; color: white;">
+                                        <span style="margin-right: 5px;">⚪</span>小
+                                    </div>
+                                    <div style="border: 1px solid #dcdfe6; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                        <span style="margin-right: 5px;">○</span>中
+                                    </div>
+                                    <div style="border: 1px solid #dcdfe6; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                        <span style="margin-right: 5px;">○</span>大
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="margin-bottom: 10px; font-weight: bold;">颜色：</div>
+                                <div style="display: flex; gap: 10px;">
+                                    <div style="border: 1px solid #dcdfe6; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; cursor: pointer; background-color: #409EFF; color: white;">
+                                        <span style="margin-right: 5px;">⚪</span>白色
+                                    </div>
+                                    <div style="border: 1px solid #dcdfe6; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                        <span style="margin-right: 5px;">○</span>蓝色
+                                    </div>
+                                    <div style="border: 1px solid #dcdfe6; padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                        <span style="margin-right: 5px;">○</span>黑色
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 40px; display: flex; align-items: center;">
+                                <div style="display: flex; align-items: center; margin-right: 20px; border: 1px solid #dcdfe6; border-radius: 4px;">
+                                    <button style="width: 36px; height: 36px; background: none; border: none; border-right: 1px solid #dcdfe6; font-size: 18px; cursor: pointer;">-</button>
+                                    <input type="text" value="1" style="width: 50px; height: 36px; border: none; text-align: center;">
+                                    <button style="width: 36px; height: 36px; background: none; border: none; border-left: 1px solid #dcdfe6; font-size: 18px; cursor: pointer;">+</button>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 30px; display: flex; gap: 15px;">
+                                <button style="flex: 1; padding: 12px 0; background: #409EFF; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;">加入购物车</button>
+                                <button style="flex: 1; padding: 12px 0; background: #f56c6c; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;">立即购买</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品介绍部分 -->
+            <div class="page-wireframe" style="margin-top: -40px;">
+                <div style="padding: 20px;">
+                    <div style="font-size: 18px; font-weight: bold; padding-bottom: 15px; border-bottom: 1px solid #ebeef5; margin-bottom: 15px;">商品介绍</div>
+                    <div style="color: #606266; line-height: 1.6;">
+                        静音节能，三档风速
+                    </div>
+                </div>
+            </div>
+
+            <!-- 购物车页面布局 -->
+            <div class="page-wireframe">
+                <div class="page-title">购物车页面布局</div>
+                <div class="page-content">
+                    <div class="nav-bar">
+                        <div class="nav-logo">家电商城</div>
+                        <div class="nav-items">
+                            <div class="nav-item">首页</div>
+                            <div class="nav-item active">购物车</div>
+                            <div class="nav-item">我的订单</div>
+                            <div class="nav-username">欢迎，用户名</div>
+                        </div>
+                    </div>
+                    <div class="cart-header">
+                        <div class="cart-title">购物车</div>
+                        <div class="continue-shopping">继续购物</div>
+                    </div>
+                    <div class="cart-content">
+                        <div class="cart-controls">
+                            <label class="select-all">
+                                <input type="checkbox">
+                                <span>全选</span>
+                            </label>
+                            <div class="batch-delete">批量删除</div>
+                        </div>
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th width="50"><input type="checkbox"></th>
+                                    <th width="400">商品信息</th>
+                                    <th width="150">单价</th>
+                                    <th width="150">数量</th>
+                                    <th width="150">小计</th>
+                                    <th width="100">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <div class="cart-item">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" class="cart-item-image" alt="电饭煲">
+                                            <div class="cart-item-info">
+                                                <div class="cart-item-name">电饭煲</div>
+                                                <div class="cart-item-attrs">规格：小, 颜色：白色</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>¥299</td>
+                                    <td>
+                                        <div class="cart-quantity">
+                                            <div class="quantity-btn">-</div>
+                                            <input type="text" class="quantity-input" value="1">
+                                            <div class="quantity-btn">+</div>
+                                        </div>
+                                    </td>
+                                    <td>¥299.00</td>
+                                    <td>
+                                        <div class="batch-delete">删除</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>
+                                        <div class="cart-item">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" class="cart-item-image" alt="空调">
+                                            <div class="cart-item-info">
+                                                <div class="cart-item-name">空调</div>
+                                                <div class="cart-item-attrs">规格：小, 颜色：白色</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>¥2999</td>
+                                    <td>
+                                        <div class="cart-quantity">
+                                            <div class="quantity-btn">-</div>
+                                            <input type="text" class="quantity-input" value="1">
+                                            <div class="quantity-btn">+</div>
+                                        </div>
+                                    </td>
+                                    <td>¥2999.00</td>
+                                    <td>
+                                        <div class="batch-delete">删除</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-summary">
+                            <label class="select-all">
+                                <input type="checkbox">
+                                <span>全选</span>
+                            </label>
+                            <div class="batch-delete">批量删除</div>
+                            <div class="selected-count">已选择 0 件商品</div>
+                            <div class="total-amount">总计：¥0.00</div>
+                        </div>
+                        <div class="action-btn btn-primary" style="width: 120px;">结算</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 订单页面布局 -->
+            <div class="page-wireframe">
+                <div class="page-title">订单页面布局</div>
+                <div class="page-content">
+                    <div class="order-header" style="padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>下单时间: 2025/05/07 23:38</div>
+                        <div style="color: #67C23A;">已支付</div>
+                    </div>
+                    <div class="order-items">
+                        <div class="cart-item" style="padding: 20px; border-bottom: 1px solid #EBEEF5;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" class="cart-item-image" alt="微波炉">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">微波炉</div>
+                                <div class="cart-item-attrs">规格：小, 颜色：白色</div>
+                            </div>
+                            <div style="margin-left: auto; text-align: right;">
+                                <div class="cart-price">¥399</div>
+                                <div>x 1</div>
+                            </div>
+                        </div>
+                        <div class="cart-item" style="padding: 20px; border-bottom: 1px solid #EBEEF5;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" class="cart-item-image" alt="电风扇">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">电风扇</div>
+                                <div class="cart-item-attrs">规格：小, 颜色：白色</div>
+                            </div>
+                            <div style="margin-left: auto; text-align: right;">
+                                <div class="cart-price">¥129</div>
+                                <div>x 1</div>
+                            </div>
+                        </div>
+                        <div class="cart-item" style="padding: 20px; border-bottom: 1px solid #EBEEF5;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" class="cart-item-image" alt="空调">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">空调</div>
+                                <div class="cart-item-attrs">规格：小, 颜色：白色</div>
+                            </div>
+                            <div style="margin-left: auto; text-align: right;">
+                                <div class="cart-price">¥2999</div>
+                                <div>x 1</div>
+                            </div>
+                        </div>
+                        <div class="cart-item" style="padding: 20px; border-bottom: 1px solid #EBEEF5;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEXp7vG6vsHm6u3s8fS2ur3c4eTU2dzX3N/h5unx9vi4vL/Dy868wMPg5ejO09bM0dQ3qvHLAAABQUlEQVRIx+2UvUrDUBiG39OmF5B2ddDBRehQwYxdHJxNHEwgZDFCD9DBttCxi0YR6lL8uQEX8RKkVxAqwUH3qjxOekpyjiUZXJ7p5ct7vt+Tk5zA5fJ/QEQD2+T4ZkgRCVwqshciFvCwGiULOFKqECLk0JU94Yy1LI+D2yRyDvCQq+8dfCbXmBp8lpkiVgFnxMrQRqz0YW1RwB2xNGR/EWsGiNW7PG8IrcG1sWnEaQb3xvITYsGjwKexq38VGH8hFoVHgS9jNgKXkXNi0yowp92PMOV9jvHFGqxGxGrfvQqsBsSkKoEHYqUE9jLBqcBLYqUE9jLBrcALYiUDKxnwUOCeWKmDJwX2iLUQeAjwOSOwUQL7Aq/E2jD4T0HPQKqC11WjBF6E7SRFqhcHl/vLr/qXv0LfDZgCJJGblGUAAAAASUVORK5CYII=" class="cart-item-image" alt="电饭煲">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">电饭煲</div>
+                                <div class="cart-item-attrs">规格：小, 颜色：白色</div>
+                            </div>
+                            <div style="margin-left: auto; text-align: right;">
+                                <div class="cart-price">¥299</div>
+                                <div>x 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-footer" style="padding: 20px; text-align: right; border-top: 1px solid #EBEEF5;">
+                        <div>共 4 件商品，总计：¥3826</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 

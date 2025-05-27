@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itjay.mapper.CartItemMapper">
+    <resultMap id="CartItemWithProductMap" type="com.itjay.pojo.CartItem">
+        <id column="cart_item_id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="product_id" property="productId"/>
+        <result column="quantity" property="quantity"/>
+        <result column="selected_attributes" property="selectedAttributes" jdbcType="VARCHAR"/>
+        <result column="product_name" property="productName"/>
+        <result column="image_url" property="imageUrl"/>
+        <result column="price" property="price"/>
+    </resultMap>
+
+    <delete id="deleteCartItemsByProductIds">
+        DELETE FROM cart_item
+        WHERE product_id IN
+        <foreach collection="productIds" item="pid" open="(" separator="," close=")">
+            #{pid}
+        </foreach>
+        AND user_id = #{userId}
+    </delete>
+
+    <select id="selectCartWithProduct" resultMap="CartItemWithProductMap">
+        SELECT
+            ci.id AS cart_item_id,
+            ci.user_id,
+            ci.product_id,
+            ci.quantity,
+            CAST(ci.selected_attributes AS CHAR) AS selected_attributes,
+            p.name AS product_name,
+            p.image_url,
+            p.price
+        FROM cart_item ci
+                 LEFT JOIN product p ON ci.product_id = p.id
+        WHERE ci.user_id = #{userId}
+    </select>
+
+</mapper>

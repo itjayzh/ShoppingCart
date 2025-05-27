@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>学生选课管理系统数据流图（仿照图片）</title>
+    <style>
+        .diagram {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .title {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        text {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+        .process {
+            fill: white;
+            stroke: black;
+        }
+        .external {
+            fill: #f0f0f0;
+            stroke: black;
+        }
+        .data-store {
+            fill: white;
+            stroke: black;
+            rx: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶层数据流图 -->
+    <div class="diagram">
+        <div class="title">顶层数据流图</div>
+        <svg width="700" height="220" style="display: block; margin: 0 auto;">
+            <!-- 外部实体 -->
+            <rect x="40" y="40" width="80" height="40" class="external"/>
+            <text x="65" y="65">学生</text>
+            <rect x="40" y="140" width="80" height="40" class="external"/>
+            <text x="55" y="165">教师</text>
+            <rect x="580" y="40" width="80" height="40" class="external"/>
+            <text x="590" y="65">管理员</text>
+
+            <!-- 中心处理 -->
+            <ellipse cx="350" cy="110" rx="80" ry="45" class="process"/>
+            <text x="295" y="115">学生选课管理系统</text>
+
+            <!-- 数据流 -->
+            <text x="120" y="60">选课请求</text>
+            <line x1="120" y1="60" x2="270" y2="90" stroke="black" marker-end="url(#arrow)"/>
+            <text x="120" y="170">选课结果</text>
+            <line x1="120" y1="170" x2="270" y2="130" stroke="black" marker-end="url(#arrow)"/>
+            <text x="430" y="60">选课结果</text>
+            <text x="430" y="170">查询数据</text>
+            <line x1="430" y1="130" x2="580" y2="60" stroke="black" marker-end="url(#arrow)"/>
+            
+            <!-- 箭头定义 -->
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#000" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- 1层数据流图 -->
+    <div class="diagram">
+        <div class="title">1层数据流图</div>
+        <svg width="950" height="370" style="display: block; margin: 0 auto;">
+            <!-- 外部实体 -->
+            <rect x="40" y="60" width="80" height="40" class="external"/>
+            <text x="65" y="85">学生</text>
+            <rect x="40" y="300" width="100" height="40" class="external"/>
+            <text x="45" y="325">教育部门</text>
+            <!-- 数据存储 -->
+            <rect x="800" y="60" width="100" height="40" class="data-store"/>
+            <text x="810" y="85">D2 选课库</text>
+            <rect x="800" y="120" width="100" height="40" class="data-store"/>
+            <text x="810" y="145">D1 学生信息</text>
+            <rect x="800" y="180" width="100" height="40" class="data-store"/>
+            <text x="810" y="205">D4 借用信息库</text>
+            <!-- 处理 -->
+            <ellipse cx="250" cy="80" rx="60" ry="30" class="process"/>
+            <text x="200" y="85">1.1 学生选课管理</text>
+            <ellipse cx="250" cy="180" rx="60" ry="30" class="process"/>
+            <text x="200" y="185">1.2 课程信息管理</text>
+            <ellipse cx="500" cy="130" rx="70" ry="35" class="process"/>
+            <text x="460" y="135">1.3 局管理局</text>
+            <ellipse cx="250" cy="280" rx="60" ry="30" class="process"/>
+            <text x="200" y="285">1.3 订借管理</text>
+            <ellipse cx="500" cy="230" rx="60" ry="30" class="process"/>
+            <text x="460" y="235">1.4 用户信息管理</text>
+            <!-- 数据流 -->
+            <line x1="120" y1="80" x2="190" y2="80" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="120" y1="320" x2="190" y2="280" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="310" y1="80" x2="430" y2="120" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="310" y1="180" x2="430" y2="140" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="570" y1="130" x2="800" y2="80" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="570" y1="130" x2="800" y2="140" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="570" y1="130" x2="800" y2="200" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="310" y1="280" x2="440" y2="230" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="560" y1="230" x2="800" y2="200" stroke="black" marker-end="url(#arrow)"/>
+            <!-- 箭头定义 -->
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#000" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- 2层数据流图（以1.1学生选课管理为例） -->
+    <div class="diagram">
+        <div class="title">2层数据流图（1.1 学生选课管理）</div>
+        <svg width="1050" height="400" style="display: block; margin: 0 auto;">
+            <!-- 外部实体 -->
+            <rect x="40" y="60" width="80" height="40" class="external"/>
+            <text x="65" y="85">学生</text>
+            <!-- 数据存储 -->
+            <rect x="900" y="60" width="100" height="40" class="data-store"/>
+            <text x="910" y="85">D3 选课侦查库</text>
+            <rect x="900" y="300" width="100" height="40" class="data-store"/>
+            <text x="910" y="325">D3 选课结果库</text>
+            <!-- 处理 -->
+            <ellipse cx="250" cy="80" rx="60" ry="30" class="process"/>
+            <text x="190" y="85">1.1.1 查询课程列表</text>
+            <ellipse cx="250" cy="180" rx="60" ry="30" class="process"/>
+            <text x="190" y="185">1.1.2 提交选课侦查</text>
+            <ellipse cx="550" cy="130" rx="90" ry="35" class="process"/>
+            <text x="490" y="125">1.1.3 判断课程冲突与答复</text>
+            <ellipse cx="750" cy="230" rx="80" ry="30" class="process"/>
+            <text x="690" y="235">1.1.4 保存选课结果</text>
+            <!-- 数据流 -->
+            <line x1="120" y1="80" x2="190" y2="80" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="310" y1="80" x2="460" y2="120" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="310" y1="180" x2="460" y2="140" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="640" y1="130" x2="670" y2="210" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="830" y1="230" x2="900" y2="320" stroke="black" marker-end="url(#arrow)"/>
+            <line x1="1000" y1="80" x2="830" y2="230" stroke="black" marker-end="url(#arrow)"/>
+            <!-- 箭头定义 -->
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#000" />
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</body>
+</html> 
